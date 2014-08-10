@@ -1,0 +1,28 @@
+<CrazyDefenders>
+	<level id = "1">
+		<nativos>
+			<nativo x = "120" y = "200"></nativo>
+		</nativos>
+		<terreno>
+			
+		</terreno>
+	</level>
+	
+	<level id = "2">
+		<nativos>
+			<nativo x = "120" y = "200"></nativo>
+		</nativos>
+		<terreno>
+			
+		</terreno>
+	</level>
+	
+	<level id = "3">
+		<nativos>
+			<nativo x = "120" y = "200"></nativo>
+		</nativos>
+		<terreno>
+			
+		</terreno>
+	</level>
+</CrazyDefenders>
