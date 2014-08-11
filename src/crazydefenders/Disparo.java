@@ -18,6 +18,8 @@ public class Disparo extends Sprite {
         setImage(ii.getImage());
         setImageLeft(iii.getImage());
         
+        setDimensions(ii.getImage().getWidth(null), ii.getImage().getHeight(null)); 
+        
         setX(x);
         setY(y);
         setDirection(direction);

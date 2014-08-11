@@ -25,15 +25,12 @@ import javax.xml.parsers.DocumentBuilder;
 
 public class Ventana extends JPanel implements Runnable,  Defaults {
 	private Dimension dimension;
-    private ArrayList nativos;
     private Player player;
     
     private int deaths = 0;
     	
 	private boolean playing = true;
 	private final String explosion = "/images/explosion.png";
-    private final String enemy = "/images/enemy.png";
-    private final String xml = "/xml/levels.xml";
     
     private Thread animator;
     
@@ -50,9 +47,8 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     
     
     public void init() {
-    	 nativos = new ArrayList();
     	 player = new Player();
-    	 Xml dxml = new Xml(xml);
+    	 World world = new World();
     	 
     	 if (animator == null || !playing) {
              animator = new Thread( this);
@@ -77,8 +73,8 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     {
     	if (player.conDisparos())
     	{
-    		ArrayList disparos = player.getDisparos();
-    		Iterator it = disparos.iterator();
+    		ArrayList<Disparo> disparos = player.getDisparos();
+    		Iterator<Disparo> it = disparos.iterator();
 
     		while (it.hasNext()) {
     			Disparo disparo = (Disparo) it.next();
@@ -147,14 +143,6 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
 
           player.keyPressed(e);
 
-          int x = player.getX();
-          int y = player.getY();
-
-          if (playing)
-          {
-            if (e.isAltDown()) {
-            }
-          }
         }
     }
 

@@ -2,13 +2,14 @@ package crazydefenders;
 
 import java.awt.Image;
 
-public class Sprite {
+public class Sprite implements Defaults {
 
         private boolean visible;
         private Image image;
         private Image leftImage;
         protected int x;
         protected int y;
+        protected int width, height;
         protected boolean dying;
         protected int dx;
         protected int dy;
@@ -18,7 +19,10 @@ public class Sprite {
             visible = true;
             direction = 1;
         }
-        
+        public void setDimensions(int x, int y){
+        	width = x;
+        	height = y;
+        }
         public void setDirection(int x){
         	if (x != direction)
         		direction = x; 			
@@ -51,7 +55,8 @@ public class Sprite {
         	if (direction >= 0)
         		temp = image;
         	if (direction < 0)
-        		temp = leftImage;
+        		if (leftImage != null)
+        			temp = leftImage;
         	return temp;
         }
 
@@ -61,6 +66,10 @@ public class Sprite {
 
         public void setY(int y) {
             this.y = y;
+            if (y > ALTO)
+            	y = ALTO;
+            if (y < 0)
+            	y = 0;
         }
         public int getY() {
             return y;

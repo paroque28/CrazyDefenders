@@ -3,7 +3,6 @@ package crazydefenders;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 
@@ -14,19 +13,18 @@ public class Player extends Sprite implements Defaults{
 
     private final String izq = "/images/craftLeft.png";
     private final String der = "/images/craft.png";
-    private int width, height;
-    private long beforeTime = System.currentTimeMillis();
+    //private long beforeTime = System.currentTimeMillis();
     private ArrayList<Disparo> disparos;
     private int contadorDisparos;
+    private int vida;
 
 
     public Player() {
- 	
+    	vida = 3;
         ImageIcon ii = new ImageIcon(this.getClass().getResource(der));
         ImageIcon iii = new ImageIcon(this.getClass().getResource(izq));
 
-        width = ii.getImage().getWidth(null); 
-        height = ii.getImage().getHeight(null);
+        setDimensions(ii.getImage().getWidth(null), ii.getImage().getHeight(null)); 
 
         setImage(ii.getImage());
         
@@ -34,10 +32,10 @@ public class Player extends Sprite implements Defaults{
 		
         setX(START_X);
         setY(START_Y);
-    	disparos = new ArrayList();
+    	disparos = new ArrayList<Disparo>();
     }
     
-    public ArrayList getDisparos(){
+    public ArrayList<Disparo> getDisparos(){
     	return disparos;
     }
     
@@ -156,4 +154,12 @@ public class Player extends Sprite implements Defaults{
             dy = 0;
         }
     }
+
+	public int getVida() {
+		return vida;
+	}
+
+	public void addVida(int vida) {
+		this.vida = vida;
+	}
 }
