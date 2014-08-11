@@ -1,0 +1,110 @@
+<CrazyDefenders>
+	<level id = "1" tiempo = "200" >
+		<nativos>
+			<nativosRastrero x = "100">
+				<nativo x = "120" y = "200"></nativo>
+			</nativosRastrero>
+			
+			<nativosTele>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosTele>
+			
+			<nativosVolumen>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosVolumen>	
+			<Jefe>
+				
+			</Jefe>
+		</nativos>
+		
+		<reliquias>
+			<reliquia x = "120" y = "200"></reliquia>
+		</reliquias>
+		
+		<terreno>
+			<punto x = "0" y = "400"></punto>
+			<punto x = "20" y = "400"></punto>
+			<punto x = "50" y = "500"></punto>
+		</terreno>
+		
+		<bonus>
+			<bono x = "0" y = "400"></bono>
+		</bonus>		
+	
+	</level>
+	
+	
+	
+	
+	
+	
+	<level id = "2" tiempo = "100">
+		<nativos>
+			<nativosRastrero>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosRastrero>
+			
+			<nativosTele>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosTele>
+			
+			<nativosVolumen>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosVolumen>	
+			<Jefe>
+				
+			</Jefe>
+		</nativos>
+		
+		<reliquias>
+			<reliquia x = "120" y = "200"></reliquia>
+		</reliquias>
+		
+		<terreno>
+			<punto x = "0" y = "400"></punto>
+			<punto x = "20" y = "400"></punto>
+			<punto x = "50" y = "500"></punto>
+		</terreno>
+		
+		<bonus>
+			<bono x = "0" y = "400"></bono>
+		</bonus>
+	</level>
+	
+	
+	
+	
+	
+	<level id = "3" tiempo = "50">
+		<nativos>
+			<nativosRastrero>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosRastrero>
+			
+			<nativosTele>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosTele>
+			
+			<nativosVolumen>
+				<nativo x = "120" y = "200"></nativo>
+			</nativosVolumen>	
+			<Jefe>
+				
+			</Jefe>
+		</nativos>
+		
+		<reliquias>
+			<reliquia x = "120" y = "200"></reliquia>
+		</reliquias>
+		
+		<terreno>
+			<punto x = "0" y = "400"></punto>
+			<punto x = "20" y = "400"></punto>
+			<punto x = "50" y = "500"></punto>
+		</terreno>
+		
+		<bonus>
+			<bono x = "0" y = "400"></bono>
+		</bonus>
+	</level>
+</CrazyDefenders>
