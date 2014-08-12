@@ -145,6 +145,10 @@ public class World {
 	{
 		return levels.get(nlevel-1).getTele();
 	}
+	public ArrayList<int[]> getTerreno()
+	{
+		return levels.get(nlevel-1).getTerreno();
+	}
 
 
 

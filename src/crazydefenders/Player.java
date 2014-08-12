@@ -17,9 +17,20 @@ public class Player extends Sprite implements Defaults{
     private ArrayList<Disparo> disparos;
     private int contadorDisparos;
     private int vida;
+    private int dX = 0;
+    
+    
+    public int getCx()
+    {
+    	return x+dX;
+    }
 
 
-    public Player() {
+    public int getDx() {
+		return dX;
+	}
+
+	public Player() {
     	vida = VIDA;
         ImageIcon ii = new ImageIcon(this.getClass().getResource(der));
         ImageIcon iii = new ImageIcon(this.getClass().getResource(izq));
@@ -48,17 +59,27 @@ public class Player extends Sprite implements Defaults{
 		
 	    
 	    if (x <= width) 
+	    {
 	        x = width;
-	    if (x >= ANCHO - 2*width) 
-	        x = ANCHO - 2*width;
+	        this.dX -= 4;
+	    }
+	    else
+	    {
+	    	if (x >= ANCHO - 2*width)
+	    	{
+	    		x = ANCHO - 2*width;
+	    		this.dX += 4;
+	    	}
+	    }
 	    if (y <= 0) 
 	        y = 0;
-	    if (y >= ALTO -10- height) 
-	        y = ALTO - 10- height;
+	    else
+	    	if (y >= ALTO -10- height) 
+	    		y = ALTO - 10- height;
 	}
     public void hurt() {
 		this.vida --;
-		if (vida <0)
+		if (vida <=0)
 			this.die();
 	}
 	public void addVida(int vida) {

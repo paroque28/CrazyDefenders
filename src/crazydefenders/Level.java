@@ -52,6 +52,10 @@ public class Level {
 	public void addJefe(int v,int vida){
 		jefe = new Jefe(v, vida);
 	}
+	public Jefe getJefe() {
+		return jefe;
+	}
+
 	public void addReliquia(int x, int y){
 		int[] xy = {x,y};
 		reliquias.add(xy);
@@ -60,19 +64,23 @@ public class Level {
 		int[] xy = {x,y};
 		terreno.add(xy);
 	}
+	public ArrayList<int[]> getTerreno() {
+		return terreno;
+	}
+
 	public void addBonus(int x, int y, int bonus){
 		int[] xyb = {x,y,bonus};
 		this.bonus.add(xyb);
-	}
-
-	public int getTime() {
-		return time;
 	}
 
 	public void setTime(int time) {
 		this.time = time;
 	}
 	
+	public int getTime() {
+		return time;
+	}
+
 	public boolean act(Player player)
 	{
 		int x = player.getX();
@@ -102,11 +110,6 @@ public class Level {
 		
 		return !jefe.isVisible();
 	}
-
-	public Jefe getJefe() {
-		return jefe;
-	}
-	
 	private boolean collisionPoint(Nativo ele, ArrayList<Nativo> sprites, Player player, int i)
 	{
 		ArrayList< Disparo> disparos = player.getDisparos();
@@ -117,7 +120,7 @@ public class Level {
 		}
 		else
 		{
-			if (collision(ele.getX(),ele.getY(), ele.getWidth(), ele.getHeight(), player.getX(),player.getY(), player.getWidth(), player.getHeight()))
+			if (collision(ele.getX(),ele.getY(), ele.getWidth(), ele.getHeight(), player.getCx(),player.getY(), player.getWidth(), player.getHeight()))
 			{
 				ele.setDying(true);
 				player.hurt();
@@ -125,7 +128,7 @@ public class Level {
 			for (int c = 0 ; c < disparos.size(); c++)
 			{
 				Disparo disparo = disparos.get(c);
-				if (collision(ele.getX(),ele.getY(), ele.getWidth(), ele.getHeight(), disparo.getX(),disparo.getY(), disparo.getWidth(), disparo.getHeight()))
+				if (collision(ele.getX(),ele.getY(), ele.getWidth(), ele.getHeight(), disparo.getX()+player.getDx(),disparo.getY(), disparo.getWidth(), disparo.getHeight()))
 				{
 					ele.setDying(true);
 					disparos.remove(c);

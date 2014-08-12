@@ -15,9 +15,19 @@
 		
 		<reliquia x = "120" y = "200"></reliquia>
 
-		<punto x = "0" y = "400"></punto>
-		<punto x = "20" y = "400"></punto>
-		<punto x = "50" y = "500"></punto>
+		<punto x = "0" y = "420"></punto>
+		<punto x = "100" y = "300"></punto>
+		<punto x = "200" y = "200"></punto>
+		<punto x = "300" y = "300"></punto>
+		<punto x = "400" y = "420"></punto>
+		<punto x = "500" y = "300"></punto>
+		<punto x = "600" y = "400"></punto>
+		<punto x = "700" y = "300"></punto>
+		<punto x = "800" y = "200"></punto>
+		<punto x = "900" y = "400"></punto>
+		<punto x = "1000" y = "300"></punto>
+		<punto x = "1100" y = "450"></punto>
+		<punto x = "1200" y = "450"></punto>
 		
 		<bonus x = "0" y = "400" vida = "1"></bonus>
 		

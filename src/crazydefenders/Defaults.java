@@ -10,6 +10,6 @@ public interface Defaults {
     public final int START_Y = ALTO / 2; 
     public final int START_X = ANCHO / 2;
     public final int MOVIMIENTO = 240;
-    public final int VIDA = 3;
+    public final int VIDA = 300;
     
 }

@@ -84,6 +84,21 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
         }
     	}
     }
+    
+    private void drawTerreno(Graphics screen)
+    {
+    	screen.setColor(Color.white);
+    	ArrayList<int[]> points = world.getTerreno();
+    	for (int x = 1; x < points.size(); x++)
+    	{
+    		int[] xy1 = points.get(x-1);
+    		int[] xy2 = points.get(x);
+    		screen.drawLine(xy1[0]-player.getDx(),xy1[1],xy2[0]-player.getDx(), xy2[1]);
+    	}
+    	
+    	
+    }
+    
     private void drawNativos(Graphics screen)
     {
     	ArrayList<Nativo> rast = world.getRastrero();
@@ -93,7 +108,7 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     		{
     			
     			Nativo rastrero = rast.get(t);
-    			screen.drawImage(rastrero.getImage(), rastrero.getX(), rastrero.getY(), this);
+    			screen.drawImage(rastrero.getImage(), rastrero.getX()-player.getDx(), rastrero.getY(), this);
     		}
     		
     	}
@@ -104,7 +119,7 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     		for (int t=0; t<vol.size(); t++)
     		{
     			Nativo volumen = vol.get(t);
-    			screen.drawImage(volumen.getImage(), volumen.getX(), volumen.getY(), this);
+    			screen.drawImage(volumen.getImage(), volumen.getX()-player.getDx(), volumen.getY(), this);
     		}
     		
     	}
@@ -117,7 +132,7 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     		for (int t=0; t<tel.size(); t++)
     		{
     			Nativo tele = tel.get(t);
-    			screen.drawImage(tele.getImage(), tele.getX(), tele.getY(), this);
+    			screen.drawImage(tele.getImage(), tele.getX()-player.getDx(), tele.getY(), this);
     		}
     		
     	}
@@ -131,6 +146,7 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
       screen.setColor(Color.black);
       screen.fillRect(0, 0, dimension.width, dimension.height);
       if (playing) {
+    	drawTerreno(screen);
         drawPlayer(screen);
         drawDisparo(screen);
         drawNativos(screen);
