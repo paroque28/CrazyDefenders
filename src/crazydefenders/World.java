@@ -15,6 +15,8 @@ import org.w3c.dom.NodeList;
 public class World {
     private final String xml = "/xml/levels.xml";
     private ArrayList<Level> levels;
+    private int nlevels;
+    private int nlevel;
 
 	
 	
@@ -58,49 +60,49 @@ public class World {
 					if (name == "nativo")
 					{
 						String type = e.getAttribute("type");
+			
 						
-						
-						if (type == "rastrero")
-						{
+						if (type.equals("rastrero"))
+						{							
 							level.addRastrero(x, y);
 				    	}
 				    	else
 				    	{
-				    		if (type == "volumen")
+				    		if (type.equals("volumen"))
 				    		{
 				    			level.addVolumen(x, y);
 				    		}
 				    		else
 				    		{
-				    			if (type == "tele")
+				    			if (type.equals("tele"))
 				    				level.addTele(x, y);
 				    		}	
 				    	}			    	
 					}
 					else
 					{
-						if (name == "reliquia")
+						if (name.equals("reliquia"))
 						{
 							level.addReliquia(x, y);
 						}
 						else
 						{
-							if (name == "punto")
+							if (name.equals("punto"))
 							{
 								level.addPunto(x, y);
 							}
 							else
 							{
-								if (name == "bonus")
+								if (name.equals("bonus"))
 								{
 									int vida = Integer.parseInt(e.getAttribute("vida"));
 									level.addBonus(x, y, vida);
 								}
 								else
 								{
-									if (name == "jefe")
+									if (name.equals("jefe"))
 									{
-										level.addJefe();
+										level.addJefe(x,y);
 									}
 								}
 							}
@@ -119,7 +121,38 @@ public class World {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
+		nlevels = levels.size();
+		setnLevel(1);
+	}
+	public void act(Player player)
+	{
+		Level level = levels.get(nlevel-1);
+		boolean value = level.act(player);
+		levels.set(nlevel-1, level);
+		if (value)
+			nlevel ++;
 	}
 	
-	
+	public ArrayList<Nativo> getRastrero()
+	{
+		return levels.get(nlevel-1).getRastrero();
+	}
+	public ArrayList<Nativo> getVolumen()
+	{
+		return levels.get(nlevel-1).getVolumen();
+	}
+	public ArrayList<Nativo> getTele()
+	{
+		return levels.get(nlevel-1).getTele();
+	}
+
+
+
+
+	private void setnLevel(int nlevel) {
+		this.nlevel = nlevel;
+	}
+	public Boolean gameOver(){
+		 return nlevel == nlevels;
+	}
 }

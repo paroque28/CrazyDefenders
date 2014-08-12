@@ -20,7 +20,7 @@ public class Player extends Sprite implements Defaults{
 
 
     public Player() {
-    	vida = 3;
+    	vida = VIDA;
         ImageIcon ii = new ImageIcon(this.getClass().getResource(der));
         ImageIcon iii = new ImageIcon(this.getClass().getResource(izq));
 
@@ -35,7 +35,48 @@ public class Player extends Sprite implements Defaults{
     	disparos = new ArrayList<Disparo>();
     }
     
-    public ArrayList<Disparo> getDisparos(){
+    public void act() {
+	
+	    x += dx;
+	    y += dy;
+	    if (dx < 0){
+	    	setDirection(-1);
+	    }
+	    if (dx > 0){
+	    	setDirection(1);
+	    }
+		
+	    
+	    if (x <= width) 
+	        x = width;
+	    if (x >= ANCHO - 2*width) 
+	        x = ANCHO - 2*width;
+	    if (y <= 0) 
+	        y = 0;
+	    if (y >= ALTO -10- height) 
+	        y = ALTO - 10- height;
+	}
+    public void hurt() {
+		this.vida --;
+		if (vida <0)
+			this.die();
+	}
+	public void addVida(int vida) {
+		this.vida = vida;
+	}
+
+	public int getVida() {
+		return vida;
+	}
+
+	private void disparar(){
+		Disparo disparo = new Disparo(this.x + width/2, this.y + height/2, this.direction);
+	
+	    disparos.add(disparo);
+	    contadorDisparos ++;
+	}
+
+	public ArrayList<Disparo> getDisparos(){
     	return disparos;
     }
     
@@ -46,7 +87,7 @@ public class Player extends Sprite implements Defaults{
 		
 		while (i  < len) {
 			Disparo disparo = disparos.get(i);    	
-			disparo.setX(disparo.getX() + (disparo.getDirection() * 4));
+			disparo.setX(disparo.getX() + (disparo.getDirection() * V_DISPARO));
 			if (disparo.getX() < 0 || disparo.getX() > ANCHO)
 			{
 				disparos.remove(i);
@@ -62,19 +103,12 @@ public class Player extends Sprite implements Defaults{
 		}
 	}
     
-    private void disparar(){
-    	Disparo disparo = new Disparo(this.x + width/2, this.y + height/2, this.direction);
-
-        disparos.add(disparo);
-        contadorDisparos ++;
-    }
-    
     public boolean conDisparos(){
 		return contadorDisparos > 0;
     	
     }
     
-    private void dieDisparo(int i){
+    public void dieDisparo(int i){
     	disparos.remove(i);
     	contadorDisparos --;
     }
@@ -82,28 +116,6 @@ public class Player extends Sprite implements Defaults{
 
 
     
-    public void act() {
-
-        x += dx;
-        y += dy;
-        if (dx < 0){
-        	setDirection(-1);
-        }
-        if (dx > 0){
-        	setDirection(1);
-        }
-    	
-        
-        if (x <= width) 
-            x = width;
-        if (x >= ANCHO - 2*width) 
-            x = ANCHO - 2*width;
-        if (y <= 0) 
-            y = 0;
-        if (y >= ALTO -10- height) 
-            y = ALTO - 10- height;
-    }
-
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
@@ -154,12 +166,4 @@ public class Player extends Sprite implements Defaults{
             dy = 0;
         }
     }
-
-	public int getVida() {
-		return vida;
-	}
-
-	public void addVida(int vida) {
-		this.vida = vida;
-	}
 }

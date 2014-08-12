@@ -15,7 +15,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -26,11 +25,11 @@ import javax.xml.parsers.DocumentBuilder;
 public class Ventana extends JPanel implements Runnable,  Defaults {
 	private Dimension dimension;
     private Player player;
+    private World world;
     
-    private int deaths = 0;
     	
 	private boolean playing = true;
-	private final String explosion = "/images/explosion.png";
+	
     
     private Thread animator;
     
@@ -48,7 +47,7 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     
     public void init() {
     	 player = new Player();
-    	 World world = new World();
+    	 world = new World();
     	 
     	 if (animator == null || !playing) {
              animator = new Thread( this);
@@ -85,6 +84,45 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
         }
     	}
     }
+    private void drawNativos(Graphics screen)
+    {
+    	ArrayList<Nativo> rast = world.getRastrero();
+    	if (rast.size() != 0)
+    	{
+    		for (int t=0; t<rast.size(); t++)
+    		{
+    			
+    			Nativo rastrero = rast.get(t);
+    			screen.drawImage(rastrero.getImage(), rastrero.getX(), rastrero.getY(), this);
+    		}
+    		
+    	}
+    	
+    	ArrayList<Nativo> vol = world.getVolumen();
+    	if (vol.size() != 0)
+    	{
+    		for (int t=0; t<vol.size(); t++)
+    		{
+    			Nativo volumen = vol.get(t);
+    			screen.drawImage(volumen.getImage(), volumen.getX(), volumen.getY(), this);
+    		}
+    		
+    	}
+    	
+    	
+    	
+    	ArrayList<Nativo> tel = world.getTele();
+    	if (tel.size() != 0)
+    	{
+    		for (int t=0; t<tel.size(); t++)
+    		{
+    			Nativo tele = tel.get(t);
+    			screen.drawImage(tele.getImage(), tele.getX(), tele.getY(), this);
+    		}
+    		
+    	}
+    		
+    }
     
     public void paint(Graphics screen)
     {
@@ -95,6 +133,7 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
       if (playing) {
         drawPlayer(screen);
         drawDisparo(screen);
+        drawNativos(screen);
       }
 
       Toolkit.getDefaultToolkit().sync();
@@ -102,11 +141,12 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     }
 
     private void animationCycle()  {
-    	if (deaths == 12) {
+    	if (world.gameOver()) {
             playing = false;
         }
     	
     	player.act();
+    	world.act(player);
     	
     	if (player.conDisparos())
     	{
@@ -118,8 +158,9 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
 		long beforeTime, timeDiff, sleep;		
 		beforeTime = System.currentTimeMillis();
 		while (playing) {
+			animationCycle();
             repaint();
-            animationCycle();
+            
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;
 

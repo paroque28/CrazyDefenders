@@ -1,6 +1,9 @@
 package crazydefenders;
 
 import java.awt.Image;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 public class Sprite implements Defaults {
 
@@ -10,31 +13,51 @@ public class Sprite implements Defaults {
         protected int x;
         protected int y;
         protected int width, height;
-        protected boolean dying;
+
+
+
+		protected boolean dying;
         protected int dx;
         protected int dy;
         protected int direction;
+        protected int directiony;
+        private final String explosion = "/images/explosion.png";
+        
 
         public Sprite() {
             visible = true;
             direction = 1;
+            directiony = 1;
         }
-        public void setDimensions(int x, int y){
-        	width = x;
-        	height = y;
-        }
+    public void setDimensions(int x, int y){
+			width = x;
+			height = y;
+		}
+	public int getWidth() { 
+		return width;
+	}
+	public int getHeight() {
+		return height;
+	}
         public void setDirection(int x){
+        	if (x == 10)
+        	{
+        		Random gen = new Random();
+        		//if (gen.nextBoolean())        		
+        		x = -direction;
+        		if (gen.nextBoolean())   
+        			directiony = -directiony;
+        	}
         	if (x != direction)
-        		direction = x; 			
+        		direction = x;
         }
         public int getDirection(){
         	return direction;
         }
-        
-        public void die() {
-            visible = false;
+        public int getDirectionY(){
+        	return directiony;
         }
-
+        
         public boolean isVisible() {
             return visible;
         }
@@ -43,20 +66,21 @@ public class Sprite implements Defaults {
             this.visible = visible;
         }
         
-        public void setImageLeft(Image imageL){
-        	this.leftImage = imageL;
-        }
         public void setImage(Image image) {
             this.image = image;
         }
 
-        public Image getImage() {
+        public void setImageLeft(Image imageL){
+			this.leftImage = imageL;
+		}
+		public Image getImage() {
         	Image temp = null;
-        	if (direction >= 0)
-        		temp = image;
+        	temp = image;
         	if (direction < 0)
         		if (leftImage != null)
+        		{
         			temp = leftImage;
+        			}
         	return temp;
         }
 
@@ -64,22 +88,38 @@ public class Sprite implements Defaults {
             this.x = x;
         }
 
-        public void setY(int y) {
-            this.y = y;
-            if (y > ALTO)
-            	y = ALTO;
-            if (y < 0)
-            	y = 0;
+        public int getX() {
+		    return x;
+		}
+		public void setY(int y) {
+            if (y > ALTO-height-20)
+            {
+            	this.y = ALTO-height-20;
+            }
+            else
+            {
+            	if (y < 0)
+            	{
+            		this.y = 0;
+            	}
+            	else
+            	{
+            		this.y = y;
+            	}
+            }
+            
         }
         public int getY() {
             return y;
         }
 
-        public int getX() {
-            return x;
-        }
-
-        public void setDying(boolean dying) {
+        public void die() {
+		    visible = false;
+		}
+		public void setDying(boolean dying) {
+			ImageIcon ii = new ImageIcon(this.getClass().getResource(explosion));
+			setImage(ii.getImage());
+			setImageLeft(ii.getImage());			
             this.dying = dying;
         }
 

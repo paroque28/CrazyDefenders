@@ -1,10 +1,16 @@
 <CrazyDefenders>
 	<level id = "1" tiempo = "200" >
-		<nativo x = "120" y = "200" type = "rastrero">g</nativo>
-		<nativo x = "120" y = "200" type = "rastrero">g</nativo>
-		<nativo x = "120" y = "200" type = "tele">g</nativo>
-		<nativo x = "120" y = "200" type = "volumen">g</nativo>
-		<nativo x = "120" y = "200" type = "volumen">g</nativo>
+		<nativo x = "120" y = "400" type = "rastrero">g</nativo>
+		<nativo x = "330" y = "400" type = "rastrero">g</nativo>
+		<nativo x = "250" y = "400" type = "rastrero">g</nativo>
+		<nativo x = "430" y = "400" type = "rastrero">g</nativo>
+		<nativo x = "620" y = "300" type = "tele">g</nativo>
+		<nativo x = "60" y = "10" type = "tele">g</nativo>
+		<nativo x = "120" y = "10" type = "volumen">g</nativo>
+		<nativo x = "220" y = "50" type = "volumen">g</nativo>
+		<nativo x = "320" y = "220" type = "volumen">g</nativo>
+		<nativo x = "320" y = "150" type = "volumen">g</nativo>
+		<nativo x = "220" y = "280" type = "volumen">g</nativo>
 		
 		
 		<reliquia x = "120" y = "200"></reliquia>
@@ -15,7 +21,7 @@
 		
 		<bonus x = "0" y = "400" vida = "1"></bonus>
 		
-		<jefe x= "0" y = "400"></jefe>
+		<jefe x= "1" y = "400"></jefe>
 	</level>
 	
 	
