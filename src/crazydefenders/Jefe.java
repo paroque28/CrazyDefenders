@@ -4,7 +4,6 @@ import javax.swing.ImageIcon;
 
 public class Jefe extends Sprite{
 	private int vida;
-	private int velocidad;
 	private final String imagen = "/images/jefe.png";
 	private int contador =200;
 	private Disparo disparo = null;
