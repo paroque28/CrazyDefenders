@@ -21,6 +21,7 @@ public class Sprite implements Defaults {
         protected int dy;
         protected int direction;
         protected int directiony;
+        protected int largo;
         private final String explosion = "/images/explosion.png";
         
 
@@ -29,6 +30,11 @@ public class Sprite implements Defaults {
             direction = 1;
             directiony = 1;
         }
+        
+   public void setLargo(int largo) {
+    		this.largo = largo;
+    	}
+
     public void setDimensions(int x, int y){
 			width = x;
 			height = y;

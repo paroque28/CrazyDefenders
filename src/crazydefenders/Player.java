@@ -16,11 +16,16 @@ public class Player extends Sprite implements Defaults{
     //private long beforeTime = System.currentTimeMillis();
     private ArrayList<Disparo> disparos;
     private int contadorDisparos;
+    private int puntaje;
     private int vida;
     private int dX = 0;
     
-    
-    public int getCx()
+
+    public void score(int points)
+    {
+    	puntaje += points;
+    }
+	public int getCx()
     {
     	return x+dX;
     }
@@ -61,14 +66,14 @@ public class Player extends Sprite implements Defaults{
 	    if (x <= width) 
 	    {
 	        x = width;
-	        this.dX -= 4;
+	        setdX(-4);
 	    }
 	    else
 	    {
 	    	if (x >= ANCHO - 2*width)
 	    	{
 	    		x = ANCHO - 2*width;
-	    		this.dX += 4;
+	    		setdX(4);
 	    	}
 	    }
 	    if (y <= 0) 
@@ -77,10 +82,20 @@ public class Player extends Sprite implements Defaults{
 	    	if (y >= ALTO -10- height) 
 	    		y = ALTO - 10- height;
 	}
-    public void hurt() {
+    private void setdX(int i) {
+		this.dX += i;
+		if (this.dX <=0)
+			this.dX = 0;
+		if (this.dX >= largo-ANCHO)
+			this.dX = largo-ANCHO;
+		
+	}
+
+
+	public void hurt() {
 		this.vida --;
 		if (vida <=0)
-			this.die();
+			this.setDying(true);
 	}
 	public void addVida(int vida) {
 		this.vida = vida;
@@ -108,8 +123,7 @@ public class Player extends Sprite implements Defaults{
 		
 		while (i  < len) {
 			Disparo disparo = disparos.get(i);    	
-			disparo.setX(disparo.getX() + (disparo.getDirection() * V_DISPARO));
-			if (disparo.getX() < 0 || disparo.getX() > ANCHO)
+			if (disparo.act())
 			{
 				disparos.remove(i);
 				len --;
@@ -187,4 +201,7 @@ public class Player extends Sprite implements Defaults{
             dy = 0;
         }
     }
+	public int getPuntaje() {
+		return puntaje;
+	}
 }

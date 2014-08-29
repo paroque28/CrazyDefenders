@@ -24,4 +24,9 @@ public class Disparo extends Sprite {
         setY(y);
         setDirection(direction);
     }
+    public boolean act()
+    {
+    	this.setX(this.getX() + (this.getDirection() * V_DISPARO));
+    	return (this.getX() < 0 || this.getX() > ANCHO);
+    }
 }

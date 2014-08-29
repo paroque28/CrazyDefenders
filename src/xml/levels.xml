@@ -2,10 +2,97 @@
 	<level id = "1" tiempo = "200" >
 		<nativo x = "120" y = "400" type = "rastrero">g</nativo>
 		<nativo x = "330" y = "400" type = "rastrero">g</nativo>
+
+		<nativo x = "620" y = "300" type = "tele">g</nativo>
+
+		<nativo x = "120" y = "10" type = "volumen">g</nativo>
+		<nativo x = "220" y = "50" type = "volumen">g</nativo>
+
+		
+		
+		<reliquia x = "120" y = "200"></reliquia>
+
+		<punto x = "0" y = "420"></punto>
+		<punto x = "100" y = "300"></punto>
+		<punto x = "200" y = "200"></punto>
+		<punto x = "300" y = "300"></punto>
+		<punto x = "400" y = "420"></punto>
+		<punto x = "500" y = "300"></punto>
+		<punto x = "600" y = "400"></punto>
+		<punto x = "700" y = "300"></punto>
+		<punto x = "800" y = "200"></punto>
+		<punto x = "900" y = "400"></punto>
+		<punto x = "1000" y = "300"></punto>
+		<punto x = "1100" y = "420"></punto>
+		<punto x = "1200" y = "420"></punto>
+		<punto x = "1300" y = "300"></punto>
+		<punto x = "1400" y = "200"></punto>
+		<punto x = "1500" y = "400"></punto>
+		<punto x = "1600" y = "300"></punto>
+		<punto x = "1700" y = "420"></punto>
+		<punto x = "1800" y = "420"></punto>
+		
+		<bonus x = "0" y = "400" vida = "1"></bonus>
+		
+		<jefe x= "800" y = "200"></jefe>
+	</level>
+	
+	
+	
+	
+	
+	
+	<level id = "2" tiempo = "100">
+		<nativo x = "120" y = "400" type = "rastrero">g</nativo>
+		<nativo x = "330" y = "400" type = "rastrero">g</nativo>
+
+		<nativo x = "620" y = "300" type = "tele">g</nativo>
+		<nativo x = "60" y = "10" type = "tele">g</nativo>
+		<nativo x = "120" y = "10" type = "volumen">g</nativo>
+		<nativo x = "220" y = "50" type = "volumen">g</nativo>
+		<nativo x = "320" y = "220" type = "volumen">g</nativo>
+
+		
+		
+		<reliquia x = "120" y = "200"></reliquia>
+
+		<punto x = "0" y = "420"></punto>
+		<punto x = "100" y = "300"></punto>
+		<punto x = "200" y = "200"></punto>
+		<punto x = "300" y = "300"></punto>
+		<punto x = "400" y = "420"></punto>
+		<punto x = "500" y = "300"></punto>
+		<punto x = "600" y = "400"></punto>
+		<punto x = "700" y = "300"></punto>
+		<punto x = "800" y = "200"></punto>
+		<punto x = "900" y = "400"></punto>
+		<punto x = "1000" y = "300"></punto>
+		<punto x = "1100" y = "420"></punto>
+		<punto x = "1200" y = "420"></punto>
+		<punto x = "1300" y = "300"></punto>
+		<punto x = "1400" y = "200"></punto>
+		<punto x = "1500" y = "400"></punto>
+		<punto x = "1600" y = "300"></punto>
+		<punto x = "1700" y = "420"></punto>
+		<punto x = "1800" y = "420"></punto>
+		
+		<bonus x = "0" y = "400" vida = "1"></bonus>
+		
+		<jefe x= "800" y = "200"></jefe>
+	</level>
+	
+	
+	
+	
+	
+	<level id = "3" tiempo = "50">
+		<nativo x = "120" y = "400" type = "rastrero">g</nativo>
+		<nativo x = "330" y = "400" type = "rastrero">g</nativo>
 		<nativo x = "250" y = "400" type = "rastrero">g</nativo>
 		<nativo x = "430" y = "400" type = "rastrero">g</nativo>
 		<nativo x = "620" y = "300" type = "tele">g</nativo>
 		<nativo x = "60" y = "10" type = "tele">g</nativo>
+		<nativo x = "10" y = "10" type = "tele">g</nativo>
 		<nativo x = "120" y = "10" type = "volumen">g</nativo>
 		<nativo x = "220" y = "50" type = "volumen">g</nativo>
 		<nativo x = "320" y = "220" type = "volumen">g</nativo>
@@ -26,58 +113,17 @@
 		<punto x = "800" y = "200"></punto>
 		<punto x = "900" y = "400"></punto>
 		<punto x = "1000" y = "300"></punto>
-		<punto x = "1100" y = "450"></punto>
-		<punto x = "1200" y = "450"></punto>
+		<punto x = "1100" y = "420"></punto>
+		<punto x = "1200" y = "420"></punto>
+		<punto x = "1300" y = "300"></punto>
+		<punto x = "1400" y = "200"></punto>
+		<punto x = "1500" y = "400"></punto>
+		<punto x = "1600" y = "300"></punto>
+		<punto x = "1700" y = "420"></punto>
+		<punto x = "1800" y = "420"></punto>
 		
 		<bonus x = "0" y = "400" vida = "1"></bonus>
 		
-		<jefe x= "1" y = "400"></jefe>
-	</level>
-	
-	
-	
-	
-	
-	
-	<level id = "2" tiempo = "100">
-		<nativo x = "120" y = "200" type = "rastrero">g</nativo>
-		<nativo x = "120" y = "200" type = "rastrero">g</nativo>
-		<nativo x = "120" y = "200" type = "tele">g</nativo>
-		<nativo x = "120" y = "200" type = "volumen">g</nativo>
-		<nativo x = "120" y = "200" type = "volumen">g</nativo>
-		
-		<reliquia x = "120" y = "200"></reliquia>
-
-		<punto x = "0" y = "400"></punto>
-		<punto x = "20" y = "400"></punto>
-		<punto x = "50" y = "500"></punto>
-		
-		<bonus x = "0" y = "400" vida = "1"></bonus>
-		
-		<jefe x= "0" y = "400"></jefe>
-
-	</level>
-	
-	
-	
-	
-	
-	<level id = "3" tiempo = "50">
-		<nativo x = "120" y = "200" type = "rastrero">g</nativo>
-		<nativo x = "120" y = "200" type = "rastrero">g</nativo>
-		<nativo x = "120" y = "200" type = "tele">g</nativo>
-		<nativo x = "120" y = "200" type = "volumen">g</nativo>
-		<nativo x = "120" y = "200" type = "volumen">g</nativo>
-		
-		<reliquia x = "120" y = "200"></reliquia>
-
-		<punto x = "0" y = "400"></punto>
-		<punto x = "20" y = "400"></punto>
-		<punto x = "50" y = "500"></punto>
-		
-		<bonus x = "0" y = "400" vida = "1"></bonus>
-		
-		<jefe x= "0" y = "400"></jefe>
-		
+		<jefe x= "800" y = "200"></jefe>
 	</level>
 </CrazyDefenders>

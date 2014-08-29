@@ -103,6 +103,7 @@ public class World {
 									if (name.equals("jefe"))
 									{
 										level.addJefe(x,y);
+										
 									}
 								}
 							}
@@ -137,6 +138,10 @@ public class World {
 	{
 		return levels.get(nlevel-1).getRastrero();
 	}
+	public Jefe getJefe()
+	{
+		return levels.get(nlevel-1).getJefe();
+	}
 	public ArrayList<Nativo> getVolumen()
 	{
 		return levels.get(nlevel-1).getVolumen();
@@ -149,7 +154,11 @@ public class World {
 	{
 		return levels.get(nlevel-1).getTerreno();
 	}
-
+	public int getLargo()
+	{
+		return levels.get(nlevel-1).getLargo();
+	}
+	
 
 
 

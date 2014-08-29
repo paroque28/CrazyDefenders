@@ -16,13 +16,12 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-
 
 public class Ventana extends JPanel implements Runnable,  Defaults {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4414099620631565310L;
 	private Dimension dimension;
     private Player player;
     private World world;
@@ -84,7 +83,15 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
         }
     	}
     }
-    
+    private void drawJefe(Graphics screen)
+    {
+    	Jefe jefe = world.getJefe();
+    	if (jefe.isVisible()) {
+            screen.drawImage(jefe.getImage(), jefe.getX(), jefe.getY(), this);
+            if (jefe.getDisparo() != null)
+            	screen.drawImage(jefe.getDisparo().getImage(), jefe.getDisparo().getX(), jefe.getDisparo().getY(), this);
+        }
+    }
     private void drawTerreno(Graphics screen)
     {
     	screen.setColor(Color.white);
@@ -138,11 +145,30 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     	}
     		
     }
-    
+    private void gameOver()
+    {
+    	String message = "Game Over, Your Score : " + player.getPuntaje();
+        Graphics screen = this.getGraphics();
+
+        screen.setColor(Color.black);
+        screen.fillRect(0, 0, ANCHO, ALTO);
+
+        screen.setColor(new Color(0, 32, 48));
+        screen.fillRect(ANCHO/2 - 150, ALTO/2 - 30, 300, 60);
+        screen.setColor(Color.white);
+        screen.drawRect(ANCHO/2 - 150, ALTO/2 - 30, 300, 60);
+
+        Font small = new Font("Helvetica", Font.BOLD, 14);
+        FontMetrics metr = this.getFontMetrics(small);
+
+        screen.setColor(Color.white);
+        screen.setFont(small);
+        screen.drawString(message, (ANCHO - metr.stringWidth(message))/2, 
+            ALTO/2);
+    }
     public void paint(Graphics screen)
     {
       super.paint(screen);
-
       screen.setColor(Color.black);
       screen.fillRect(0, 0, dimension.width, dimension.height);
       if (playing) {
@@ -150,19 +176,19 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
         drawPlayer(screen);
         drawDisparo(screen);
         drawNativos(screen);
+        drawJefe(screen);
       }
+    	  
 
       Toolkit.getDefaultToolkit().sync();
       screen.dispose();
     }
 
     private void animationCycle()  {
-    	if (world.gameOver()) {
-            playing = false;
-        }
     	
     	player.act();
     	world.act(player);
+    	player.setLargo(world.getLargo());
     	
     	if (player.conDisparos())
     	{
@@ -188,7 +214,8 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
                 System.out.println("interrupted");
             }
             beforeTime = System.currentTimeMillis();
-        }		
+        }
+		gameOver();
 	}
 	private class TAdapter extends KeyAdapter {
 
