@@ -154,6 +154,10 @@ public class World {
 	{
 		return levels.get(nlevel-1).getTerreno();
 	}
+	public ArrayList<Reliquia> getReliquia()
+	{
+		return levels.get(nlevel-1).getReliquia();
+	}
 	public int getLargo()
 	{
 		return levels.get(nlevel-1).getLargo();

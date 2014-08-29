@@ -52,7 +52,6 @@ public class Player extends Sprite implements Defaults{
     }
     
     public void act() {
-	
 	    x += dx;
 	    y += dy;
 	    if (dx < 0){
@@ -97,8 +96,8 @@ public class Player extends Sprite implements Defaults{
 		if (vida <=0)
 			this.setDying(true);
 	}
-	public void addVida(int vida) {
-		this.vida = vida;
+	public void addVida() {
+		this.vida ++;
 	}
 
 	public int getVida() {

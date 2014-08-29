@@ -9,7 +9,7 @@ public class Level {
 	private ArrayList<Nativo> nativosTele = new ArrayList<Nativo>();
 	private ArrayList<Nativo> nativosRastreros = new ArrayList<Nativo>();
 	private ArrayList<int[]> terreno= new ArrayList<int[]>();
-	private ArrayList<int[]> reliquias= new ArrayList<int[]>();
+	private ArrayList<Reliquia> reliquias= new ArrayList<Reliquia>();
 	private ArrayList<int[]> bonus= new ArrayList<int[]>();
 	private int largo;
 	
@@ -58,8 +58,11 @@ public class Level {
 	}
 
 	public void addReliquia(int x, int y){
-		int[] xy = {x,y};
-		reliquias.add(xy);
+		Reliquia reliquia =  new Reliquia(x,y);
+		reliquias.add(reliquia);
+	}
+	public ArrayList<Reliquia> getReliquia() {
+		return reliquias;
 	}
 	public void addPunto(int x, int y){
 		int[] xy = {x,y};
@@ -144,6 +147,16 @@ public class Level {
 				}
 				
 			}
+		}
+		for (int t = 0; t < reliquias.size(); t++)
+		{
+			Reliquia ele = reliquias.get(t);
+			if (collision(ele.getX(),ele.getY(), ele.getWidth(), ele.getHeight(), player.getCx(),player.getY(), player.getWidth(), player.getHeight()))
+			{
+				player.addVida();
+				reliquias.remove(t);
+			}
+			
 		}
 		
 		return false;

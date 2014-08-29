@@ -94,6 +94,13 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
     }
     private void drawTerreno(Graphics screen)
     {
+    	ArrayList<Reliquia> heart = world.getReliquia();
+    	Iterator<Reliquia> it = heart.iterator();
+
+		while (it.hasNext()) {
+			Reliquia reliquia = (Reliquia) it.next();
+			screen.drawImage(reliquia.getImage(), reliquia.getX()-player.getDx(), reliquia.getY(), this);
+		}
     	screen.setColor(Color.white);
     	ArrayList<int[]> points = world.getTerreno();
     	for (int x = 1; x < points.size(); x++)
@@ -172,11 +179,12 @@ public class Ventana extends JPanel implements Runnable,  Defaults {
       screen.setColor(Color.black);
       screen.fillRect(0, 0, dimension.width, dimension.height);
       if (playing) {
-    	drawTerreno(screen);
+
         drawPlayer(screen);
         drawDisparo(screen);
         drawNativos(screen);
         drawJefe(screen);
+    	drawTerreno(screen);
       }
     	  
 
